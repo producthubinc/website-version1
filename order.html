@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous">
+  <title>ProductHub</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    #upload {
+      opacity: 0;
+    }
+
+    #upload-label {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+    }
+
+    .image-area {
+      border: 2px dashed rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      position: relative;
+    }
+
+    .image-area::before {
+      content: 'Uploaded image result';
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      z-index: 1;
+    }
+
+    .image-area img {
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light primary py-md-0 px-0 sticky-top">
+    <a class="navbar-brand py-2 px-2" href="#">
+      <img src="logo/Producthub Cropped sm.png" style="width:10rem">
+    </a>
+    <button class="navbar-toggler mr-1 action" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ml-md-5 row" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-md-auto col-md-6 px-0">
+        <li class="nav-item col-md-2">
+          <a class="nav-link text-center" href="/">Home </a>
+        </li>
+        <!-- 
+        <li class="nav-item col-md-2" id="nav-orders">
+          <a class="nav-link text-center" href="./orders.html">Orders</a>
+        </li> -->
+
+        <li class="nav-item col-md-2" id="nav-logout" onclick="user.logout()">
+          <span class="nav-link text-center">Logout</span>
+        </li>
+
+        <li class="nav-item col-md-2" id="nav-login">
+          <a class="nav-link text-center" href="./login.html">Login</a>
+        </li>
+
+        <li class="nav-item col-md-2" id="nav-signup">
+          <a class="nav-link text-center" href="./signup.html">Signup</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+  <div class="container-fluid bg-white" style="padding: 0px;">
+    <div class="row justify-content-around my-2 mx-2 p-2 primary">
+
+      <div class="col-md-4">
+        <div class="lead text-white text-center" id="product-title"></div>
+        <div style="display: flex; min-height: 18rem; justify-content: center;">
+          <img class="img-fluid img-thumbnail my-auto" src="" style="max-width: 22rem; " id="product-thumbnail">
+        </div>
+
+        <p class="text-white text-justify" id="product-description">
+        </p>
+
+        <div class="lead text-white mt-4"> Product Details </div>
+        <ul class="text-white" id="product-details">
+
+        </ul>
+      </div>
+
+
+      <div class="col-md-4 my-5 my-md-2 pt-5">
+
+        <div class="input-group mb-3 px-1 py-1 rounded-pill bg-white shadow-sm">
+          <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0"
+            accept="image/x-png,image/jpeg">
+          <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+          <div class="input-group-append">
+            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+          </div>
+        </div>
+
+        <div id="ImageView">
+          <!-- Uploaded image area-->
+          <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box below.</p>
+          <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+              class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+        </div>
+        <div class="input-group px-1 py-1 my-3 rounded-pill bg-white shadow-sm  pr-4">
+          <label id="quantity-label" for="quantity" class="font-weight-light text-muted my-auto mx-2">Quantity</label>
+          <input id="quantity" type="number" value="1" min="1" class="form-control border-0">
+        </div>
+
+        <div class="input-group px-1 py-1 my-3 rounded-pill bg-white shadow-sm pr-4">
+          <label id="quantity-label" for="quantity" class="font-weight-light text-muted my-auto mx-2">Payment
+            mode</label>
+          <select id="payment" class="form-control border-0">
+            <option value="UPI" selected>UPI</option>
+            <option value="CoD">Cash on delivery</option>
+          </select>
+        </div>
+
+        <div class="input-group px-1 py-1 my-3 rounded-pill bg-white shadow-sm pr-4">
+          <label id="quantity-label" for="quantity" class="font-weight-light text-muted my-auto mx-2">Address</label>
+          <textarea id="address" row='3' autocomplete="false" class="form-control border-0" required> </textarea>
+        </div>
+
+
+        <div class="row justify-content-between my-1">
+          <div class="col-12 mt-2 text-center">
+            <button type="button" onclick="orders.review(products.selected);" id="review-btn" class="btn action">Review
+              Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 my-5 my-md-2" style="visibility: hidden;" id="summary">
+        <div class="lead text-white text-center"> Order summary </div>
+        <div class="mx-auto">
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> Product name :</div>
+            <div class="col-5 text-white" id='summary-product'> </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> File Name :</div>
+            <div class="col-5 text-white" id='summary-file'> </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> Quantity :</div>
+            <div class="col-5 text-white" id='summary-quantity'> </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> Address :</div>
+            <div class="col-5 text-white" id='summary-address'> </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> Payable Amount :</div>
+            <div class="col-5 text-white" id='summary-amount'> </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 text-white text-right"> Payment mode :</div>
+            <div class="col-5 text-white" id='summary-paymode'> </div>
+          </div>
+        </div>
+        <!-- <input type="checkbox" checked data-toggle="toggle"> -->
+        <div class="row justify-content-between my-3">
+          <div class="col-6 mt-2 text-right">
+            <button type="submit" class="btn action" id="editbtn" onclick="orders.edit();">Edit Order</button>
+          </div>
+          <div class="col-6 mt-2 text-left">
+            <button type="submit" class="btn action" id="confirmbtn" onclick="orders.confirm();">Confirm Order</button>
+          </div>
+        </div>
+        <!-- <div id="payment-info" class="col-12 px-3 py-2 border rounded text-justify  mt-3 text-white"
+          style="border-color:#69F0AE !important;">
+          Your order has been placed and mail thread will be started for further updates.
+        </div> -->
+      </div>
+     
+    </div>
+
+  </div>
+
+
+
+  </div>
+
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="js/request.js"></script>
+  <script src="js/User.js"></script>
+  <script src="js/Orders.js"></script>
+  <script src="js/Products.js"></script>
+
+  <script>
+
+    let user;
+    let orders;
+    let products;
+    function onUserPresent() {
+      //const navOrder = document.getElementById('nav-orders');
+      const navLogout = document.getElementById('nav-logout');
+      const navLogin = document.getElementById('nav-login');
+      const navSignup = document.getElementById('nav-signup');
+      if (user.user) {
+        //navOrder.style.visibility = "visible";
+        navLogout.style.visibility = "visible";
+        navLogin.style.display = "none";
+        navSignup.style.display = "none";
+      }
+      else {
+        window.location.replace("/login.html");
+      }
+    }
+    document.onreadystatechange = function () {
+      if (document.readyState == "interactive") {
+        user = new User(onUserPresent);
+        orders = new Orders();
+        products = new Products();
+        products.load();
+        orders.SetFileFilter(products.selected.FileFormat)
+      }
+    }
+
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE
+    * ========================================== */
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        orders.ResetBorders();
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#imageResult')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $(function () {
+      $('#upload').on('change', function () {
+        readURL(input);
+      });
+    });
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE NAME
+    * ========================================== */
+    var input = document.getElementById('upload');
+    var infoArea = document.getElementById('upload-label');
+
+    input.addEventListener('change', showFileName);
+    function showFileName(event) {
+      var input = event.srcElement;
+      var fileName = input.files[0].name;
+      infoArea.textContent = fileName;
+    }
+
+  </script>
+
+</body>
+
+</html>
