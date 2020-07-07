@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+    <title>ProductHub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light primary py-md-0 px-0 sticky-top">
+        <a class="navbar-brand py-2 px-2" href="#">
+            <img src="logo/Producthub Cropped sm.png" style="width:10rem">
+        </a>
+        <button class="navbar-toggler mr-1 action" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse ml-md-5 row" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-md-auto col-md-6 px-0">
+                <li class="nav-item active col-md-2">
+                    <a class="nav-link text-center" href="/">Home </a>
+                </li>
+                <!--                 
+                <li class="nav-item col-md-2" id="nav-orders">
+                    <a class="nav-link text-center" href="./orders.html">Orders</a>
+                </li>
+                 -->
+                <li class="nav-item col-md-2" id="nav-logout" onclick="user.logout()">
+                    <span class="nav-link text-center" >Logout</span>
+                </li>
+
+                <li class="nav-item col-md-2" id="nav-login">
+                    <a class="nav-link text-center" href="./login.html">Login</a>
+                </li>
+
+                <li class="nav-item col-md-2" id="nav-signup">
+                    <a class="nav-link text-center" href="./signup.html">Signup</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-white" style="padding: 0px;">
+        <div class="text-center" style="min-height: 100vh;">
+            
+            <div class="row justify-content-around vertical-center">
+
+                <div class="col-10 col-md-3 my-2 primary rounded card-shadow" style=" min-height:25rem;">
+                    <div>
+                        <div class="text-light h3 mt-2"> LITHOPHANES </div>
+                        <div style="display: flex; min-height: 18rem ;justify-content: center;">
+                            <img class="img-fluid img-thumbnail my-auto" src="./img/litho.jpeg"
+                                style="max-height:18rem;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 1rem; margin-left: auto; margin-right: auto; left:0; right:0">
+                            <div class="pt-2">
+                                <button type="submit" class="btn action" onclick="orders.placeOrder(1)"> Place Order </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-10 col-md-3 my-2 primary rounded card-shadow" style=" min-height:25rem;">
+                    <div>
+                        <div class="text-light h3 mt-2"> FRAMES </div>
+                        <div style="display: flex; min-height: 18rem ;justify-content: center;">
+                            <img class="img-fluid img-thumbnail my-auto" src="./img/frame.jpeg"
+                                style="max-height:18rem;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 1rem; margin-left: auto; margin-right: auto; left:0; right:0">
+                            <div class="pt-2">
+                                <button type="submit" class="btn action" onclick="orders.placeOrder(2)"> Place Order </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-10 col-md-3 my-2 primary rounded card-shadow" style=" min-height:25rem;">
+                    <div>
+                        <div class="text-light h3 mt-2"> CUSTOM </div>
+                        <div style="display: flex; min-height: 18rem; justify-content: center;">
+                            <img class="img-fluid img-thumbnail my-auto" src="./img/custom.jpeg"
+                                style="max-height: 18rem; ">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 1rem; margin-left: auto; margin-right: auto; left:0; right:0">
+                            <div class="pt-2">
+                                <button type="submit" class="btn action" onclick="orders.placeOrder(3)"> Place Order </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- SUBSCRIBE TO MAILING LIST -->
+    <div class="row justify-content-around mt-md-0 mb-5 mb-md-4" style="min-height: 100vh; display: flex; background: #fafafa;">
+        <div class="col-10 col-md-4 primary rounded p-3 my-2 my-md-auto" style="max-height: 33rem;">
+            <center>
+                <span class="label24 txt-foreground "> Be the first to know! </span>
+                <form onsubmit="return subscribe.Send()">
+                    <div class="input-group pt-4">
+                        <input class="form-control" type="email" placeholder="example@mail.com" name="Email">
+                        <button type="submit" class="btn action"> Subscribe </button>
+                    </div>
+                </form>
+                <span id="subscribe-info" class="info-txt"></span>
+            </center>
+            <div class="text-light lead mt-4">
+                Join the ProductHub family by subscribing to our mailing list!
+                Subscribing to our mailing list comes with great benefits!
+                <ul>
+                    <li> Get exclusive offers and content.</li>
+                    <li> Stay notified about the exciting news and updates.</li>
+                    <li>
+                        Receive our newsletters regularly to know more about recent technological developments.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------>
+        <div class="col-10 col-md-4 primary p-3 rounded my-2 my-md-auto" style="max-height: 33rem;">
+            <!-- COLLABORATE WITH US -->
+            <div class="text-center">
+                <span class="label24 txt-foreground"> Collaborate with us! </span>
+            </div>
+
+            <form onsubmit="return collaborate.Send()">
+                <div class="form-group pt-1">
+                    <label for="Name" class="txt-foreground mb-0">Name*</label>
+                    <input class="form-control pt-0" type="text" required placeholder="Name" name="Name">
+                </div>
+                <div class="form-group pt-1">
+                    <label for="Email" class="txt-foreground mb-0">Email*</label>
+                    <input class="form-control pt-0" type="email" required placeholder="example@mail.com"
+                        name="CollabEmail">
+                </div>
+                <div class="form-group pt-1">
+                    <label for="Contact" class="txt-foreground mb-0">Contact*</label>
+                    <input class="form-control pt-0" type="text" required placeholder="Contact Number" name="Contact">
+                </div>
+                <div class="form-group pt-1">
+                    <label for="BusinessType" class="txt-foreground mb-0">Work/Business Domain*</label>
+                    <input class="form-control pt-0" type="text" required placeholder="Type of Business"
+                        name="BusinessType">
+                </div>
+                <div class="text-center pt-2">
+                    <button type="submit" class="btn action"> Collaborate </button>
+                </div>
+            </form>
+            <div class="text-center">
+                <span id="collaborate-info" class="info-txt"></span>
+            </div>
+            <!-- ---------------------------------------------------------------------------------------- -->
+        </div>
+    </div>
+    <!--
+    <hr class="mt-4">
+    <br>
+    <br>
+    <div class="col-lg-4 offset-md-4">
+        <img src="logo/cover.png" style="width:100%; height: auto; margin: 0 auto">
+    </div> 
+    -->
+    <!--    FOOTER  -->
+    <footer class="action py-2 fixed-bottom">
+        <div class="text-white text-center">Copyright © ProductHUB.in</div>
+    </footer>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="js/request.js"></script>
+    <script src="js/Subscribe.js"></script>
+    <script src="js/Collaborate.js"></script>
+    <script src="js/User.js"></script>
+    <script src="js/Orders.js"></script>
+
+    <script>
+        let subscribe;
+        let collaborate;
+        let user;
+        let orders;
+
+        function onUserPresent()
+        {
+            //const navOrder = document.getElementById('nav-orders');
+            const navLogout = document.getElementById('nav-logout');
+            const navLogin = document.getElementById('nav-login');
+            const navSignup = document.getElementById('nav-signup');
+            if(user.user)
+            {
+                //navOrder.style.visibility = "visible";
+                navLogout.style.visibility = "visible";
+                navLogin.style.display = "none";
+                navSignup.style.display = "none";
+            }
+            else
+            {
+                //navOrder.style.display = "none";
+                navLogout.style.display = "none";
+                navLogin.style.visibility = "visible";
+                navSignup.style.visibility = "visible";
+            }
+        }
+        document.onreadystatechange = function () {
+            if (document.readyState == "interactive") {
+                subscribe = new Subscribe();
+                collaborate = new Collaborate();
+                user = new User(onUserPresent);
+                orders = new Orders();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
